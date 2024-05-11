@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="root_container" stylesheets="@hotel_style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hotel_client.HelloController">
+   <children>
+      <VBox prefHeight="490.0" prefWidth="200.0" styleClass="sidebar">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="175.0" prefWidth="136.0" styleClass="avatar">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <children>
+                  <FontAwesomeIcon fill="WHITE" glyphName="USER" size="6rem">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="67.0" />
+                     </font>
+                  </FontAwesomeIcon>
+                  <Label text="Welcome," textFill="WHITE">
+                     <font>
+                        <Font name="Ebrima" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="admin_name" alignment="CENTER" prefHeight="20.0" prefWidth="84.0" text="admin" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="289.0" prefWidth="136.0">
+               <children>
+                  <Button fx:id="dashboard_interface" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#show_interface" prefHeight="30.0" prefWidth="187.0" styleClass="btn_menu" text="Dashborad" textFill="WHITE">
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" size="1.2em" text="" wrappingWidth="21.0" />
+                     </graphic>
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="room_iterface" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#show_interface" prefHeight="30.0" prefWidth="187.0" styleClass="btn_menu" text="Room" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="7.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="HOTEL" size="1.2em" wrappingWidth="21.028614044189453" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="user_button" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#show_interface" prefHeight="30.0" prefWidth="187.0" styleClass="btn_menu" text="Users" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="7.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" size="1.2em" wrappingWidth="19.914297103881836" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="reservation_button" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="91.0" mnemonicParsing="false" onAction="#show_interface" prefHeight="30.0" prefWidth="187.0" styleClass="btn_menu" text="Reservations" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="7.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CHECK" size="1.3em" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="demande_button" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#show_interface" prefHeight="30.0" prefWidth="187.0" styleClass="btn_menu" text="Demandes" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="7.0" />
+                     </padding>
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CHECK" size="1.3em" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="container" prefHeight="470.0" prefWidth="660.0" styleClass="content_container" stylesheets="@hotel_style.css">
+         <HBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </HBox.margin>
+         <children>
+            <AnchorPane fx:id="dash_continer" prefHeight="200.0" prefWidth="662.0" styleClass="dashboard" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox prefHeight="160.0" prefWidth="665.0" spacing="35.0" styleClass="total_container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <AnchorPane prefHeight="142.0" prefWidth="193.0" styleClass="total">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="14.0" layoutY="72.0" size="3.5em" text="" wrappingWidth="40.68573760986328">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </FontAwesomeIcon>
+                              <Label layoutX="61.0" layoutY="99.0" prefHeight="31.0" prefWidth="84.0" text="Total Users" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="total_users" layoutX="140.0" layoutY="14.0" prefHeight="18.0" prefWidth="53.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="21.0" layoutY="21.0" prefHeight="142.0" prefWidth="193.0" styleClass="total">
+                           <children>
+                              <Label layoutX="54.0" layoutY="100.0" prefHeight="31.0" prefWidth="139.0" text="Total Reservations" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="total_reservation" layoutX="140.0" layoutY="14.0" prefHeight="18.0" prefWidth="53.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="CHECK" layoutX="14.0" layoutY="72.0" size="3.5em" styleClass="icn_total" text="">
+                                 <font>
+                                    <Font size="35.0" />
+                                 </font>
+                              </FontAwesomeIcon>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="250.0" layoutY="21.0" prefHeight="142.0" prefWidth="193.0" styleClass="total">
+                           <children>
+                              <Label layoutX="61.0" layoutY="99.0" prefHeight="31.0" prefWidth="84.0" text="Total Room" textFill="WHITE">
+                                 <font>
+                                    <Font name="Arial Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="total_room" layoutX="140.0" layoutY="14.0" prefHeight="18.0" prefWidth="53.0" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                              <FontAwesomeIcon fill="WHITE" glyphName="HOTEL" layoutX="29.0" layoutY="73.0" size="3.3em" styleClass="icn_total" text="" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <AnchorPane layoutX="290.0" layoutY="199.0" prefHeight="278.0" prefWidth="673.0" styleClass="graphe" stylesheets="@hotel_style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <BarChart fx:id="chart" layoutX="81.0" layoutY="30.0" prefHeight="248.0" prefWidth="485.0" stylesheets="@hotel_style.css">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" styleClass="bar" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </BarChart>
+                     </children>
+                  </AnchorPane>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </AnchorPane>
+            <AnchorPane fx:id="room_container" prefHeight="200.0" prefWidth="662.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="search" onKeyTyped="#searchRoom" prefHeight="33.0" prefWidth="316.0" promptText="Search" styleClass="search" stylesheets="@hotel_style.css">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </TextField>
+                  <FontAwesomeIcon glyphName="SEARCH" layoutX="14.0" layoutY="21.0" size="1.2em" text="" />
+                  <TableView fx:id="room_tabView" layoutX="3.0" layoutY="49.0" onMouseClicked="#room_selected" prefHeight="175.0" prefWidth="669.0" styleClass="tab_content" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                    <columns>
+                      <TableColumn fx:id="num_room_column" editable="false" prefWidth="243.199951171875" sortable="false" styleClass="tab_column1" text="Num_room" />
+                      <TableColumn fx:id="price_column" editable="false" prefWidth="223.20001220703125" sortable="false" styleClass="tab_column" text="Price" />
+                        <TableColumn fx:id="type_column" editable="false" minWidth="0.0" prefWidth="205.39999999999998" sortable="false" styleClass="tab_column_n" text="Type" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <VBox alignment="TOP_CENTER" layoutX="65.0" layoutY="225.0" prefHeight="222.0" prefWidth="260.0" spacing="15.0">
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="260.0" styleClass="input_room">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Num_room:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_room" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="160.0" styleClass="field" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Price:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_price" prefHeight="26.0" prefWidth="160.0" styleClass="field">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Type:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="type_choice" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane layoutX="403.0" layoutY="266.0" prefHeight="99.0" prefWidth="251.0" AnchorPane.leftAnchor="403.0">
+                     <children>
+                        <Button fx:id="update" layoutX="40.0" layoutY="54.0" mnemonicParsing="false" onAction="#updateRoom" style="-fx-background-color: #40257A;" styleClass="btn_req" text="Update" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="54.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="delete_btn" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteRoom" style="-fx-background-color: #62063D;" styleClass="btn_req" text="Delete">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="Clear_btn" layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onAction="#resetRoomData" style="-fx-background-color: #1D1C56;" styleClass="btn_req" text="Clear">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_add" layoutX="138.0" layoutY="54.0" mnemonicParsing="false" onAction="#addRoom" style="-fx-background-color: #0B5E77;" styleClass="btn_req" text="Add">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children></AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="user_container" layoutX="11.0" layoutY="10.0" prefHeight="200.0" prefWidth="662.0" styleClass="in" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="searchUser" onKeyTyped="#searchUser" prefHeight="33.0" prefWidth="316.0" promptText="Search" styleClass="search" stylesheets="@hotel_style.css">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </TextField>
+                  <FontAwesomeIcon glyphName="SEARCH" layoutX="14.0" layoutY="21.0" size="1.2em" text="" />
+                  <TableView fx:id="user_tabView" layoutX="3.0" layoutY="49.0" onMouseClicked="#user_selected" prefHeight="149.0" prefWidth="673.0" styleClass="tab_content" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                     <columns>
+                        <TableColumn fx:id="email_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column" text="email" />
+                        <TableColumn fx:id="name_column" editable="false" minWidth="0.0" prefWidth="82.7" sortable="false" styleClass="tab_column_n" text="name" />
+                        <TableColumn fx:id="password_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column1" text="password" />
+                        <TableColumn fx:id="phone_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column1" text="phone_num" />
+                        <TableColumn fx:id="adresse_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column1" text="adresse" />
+                        <TableColumn fx:id="sexe_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column1" text="sexe" />
+                        <TableColumn fx:id="generation_column" editable="false" prefWidth="82.7" sortable="false" styleClass="tab_column1" text="generation" />
+                        <TableColumn fx:id="appUser_column" editable="false" prefWidth="89.5999755859375" sortable="false" styleClass="tab_column1" text="appUser" />
+                     </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="198.0" prefHeight="248.0" prefWidth="260.0" spacing="3.0">
+                     <children>
+                        <HBox layoutX="10.0" layoutY="207.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="103.0" styleClass="input" text="email:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_email" prefHeight="26.0" prefWidth="162.0" styleClass="field">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0" styleClass="input_room">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="password:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_password" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="160.0" styleClass="field" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="name:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_name" prefHeight="26.0" prefWidth="160.0" styleClass="field">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="sexe">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="choice_sexe" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="82.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="adresse:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_adresse" prefHeight="26.0" prefWidth="160.0" styleClass="field">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="166.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="generation:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="input_generation" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="94.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="appUser">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="choice_user" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="183.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="98.0" styleClass="input" text="phone_number:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_phone" prefHeight="26.0" prefWidth="160.0" styleClass="field">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane layoutX="403.0" layoutY="266.0" prefHeight="99.0" prefWidth="251.0" AnchorPane.leftAnchor="403.0">
+                     <children>
+                        <Button fx:id="update_btn_user" layoutX="40.0" layoutY="54.0" mnemonicParsing="false" onAction="#updateUser" style="-fx-background-color: #40257A;" styleClass="btn_req" text="Update" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="54.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="delete_btn_user" layoutX="138.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteUser" style="-fx-background-color: #62063D;" styleClass="btn_req" text="Delete">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="Clear_user" layoutX="40.0" layoutY="14.0" mnemonicParsing="false" onAction="#resetUser" style="-fx-background-color: #1D1C56;" styleClass="btn_req" text="Clear">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_add_user" layoutX="138.0" layoutY="54.0" mnemonicParsing="false" onAction="#addUser" style="-fx-background-color: #0B5E77;" styleClass="btn_req" text="Add">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="293.0" layoutY="215.0" prefHeight="139.0" prefWidth="106.0" style="-fx-background-color: white;" styleClass="img_import" stylesheets="@hotel_style.css" AnchorPane.leftAnchor="293.0">
+                     <children>
+                        <ImageView fx:id="img_import" fitHeight="139.0" fitWidth="106.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" styleClass="img_import_class" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button fx:id="btn_import" layoutY="112.0" mnemonicParsing="false" onAction="#import_mg" prefHeight="26.0" prefWidth="106.0" styleClass="btn_import" stylesheets="@hotel_style.css" text="import" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="reservation_container" layoutX="21.0" layoutY="21.0" prefHeight="200.0" prefWidth="662.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="search_reservation" onKeyTyped="#searchReservation" prefHeight="33.0" prefWidth="316.0" promptText="Search" styleClass="search" stylesheets="@hotel_style.css">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </TextField>
+                  <FontAwesomeIcon glyphName="SEARCH" layoutX="14.0" layoutY="21.0" size="1.2em" text="" />
+                  <TableView fx:id="reservation_tabView" layoutX="3.0" layoutY="49.0" onMouseClicked="#reservation_selected" prefHeight="175.0" prefWidth="669.0" styleClass="tab_content" AnchorPane.bottomAnchor="225.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                     <columns>
+                        <TableColumn fx:id="id_reservation_column" editable="false" prefWidth="111.5" sortable="false" styleClass="tab_column1" text="Id_reservation" />
+                        <TableColumn fx:id="date_debut_column" editable="false" prefWidth="111.5" sortable="false" styleClass="tab_column" text="Date_debut" />
+                        <TableColumn fx:id="date_fin_column" editable="false" minWidth="0.0" prefWidth="111.5" sortable="false" styleClass="tab_column_n" text="Date_fin" />
+                        <TableColumn fx:id="total_column" editable="false" prefWidth="111.5" sortable="false" styleClass="tab_column1" text="Total" />
+                        <TableColumn fx:id="num_room_reservation_column" editable="false" prefWidth="111.5" sortable="false" styleClass="tab_column1" text="Num_room" />
+                        <TableColumn fx:id="email_reservation_column" editable="false" prefWidth="111.5" sortable="false" styleClass="tab_column1" text="Email" />
+                     </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <VBox alignment="TOP_CENTER" layoutX="28.0" layoutY="224.0" prefHeight="222.0" prefWidth="260.0" spacing="10.0">
+                     <children>
+                        <HBox prefHeight="26.0" prefWidth="260.0" styleClass="input_room">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="id_reservation:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="input_id_reservation" alignment="TOP_LEFT" prefHeight="26.0" prefWidth="160.0" styleClass="field" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Num_room:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="input_num_room_reservation" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="82.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Email:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ComboBox fx:id="choice_email_reservation" prefHeight="27.0" prefWidth="159.0" promptText="Choose" style="-fx-background-color: transparent;" styleClass="field" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="124.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Date_debut:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="date_debut_reservation" prefHeight="26.0" prefWidth="160.0" />
+                           </children>
+                        </HBox>
+                        <HBox layoutX="10.0" layoutY="167.0" prefHeight="26.0" prefWidth="260.0">
+                           <children>
+                              <Label prefHeight="26.0" prefWidth="100.0" styleClass="input" text="Date_fin:">
+                                 <font>
+                                    <Font name="Arial" size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="date_fin_reservation" prefHeight="26.0" prefWidth="161.0" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+                  <AnchorPane layoutX="337.0" layoutY="253.0" prefHeight="67.0" prefWidth="326.0" AnchorPane.leftAnchor="337.0">
+                     <children>
+                        <Button fx:id="delete_btn_reservation" layoutX="232.0" layoutY="14.0" mnemonicParsing="false" onAction="#deleteReservation" style="-fx-background-color: #62063D;" styleClass="btn_req" text="Delete">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="Clear_btn_reservation" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#resetReservationData" style="-fx-background-color: #1D1C56;" styleClass="btn_req" text="Clear">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_add_reservation" layoutX="123.0" layoutY="14.0" mnemonicParsing="false" onAction="#addReservation" style="-fx-background-color: #0B5E77;" styleClass="btn_req" text="Add">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="316.0" layoutY="365.0" prefHeight="58.0" prefWidth="230.0">
+                     <children>
+                        <Label layoutX="3.0" layoutY="11.0" prefHeight="35.0" prefWidth="100.0" text="Your Total is :" textAlignment="CENTER" textFill="#08023e">
+                           <font>
+                              <Font name="Ebrima Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="total_res" layoutX="103.0" layoutY="11.0" prefHeight="35.0" prefWidth="105.0" text="0 D" textFill="#08023e">
+                           <font>
+                              <Font name="Ebrima Bold" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="reservation_container1" layoutX="31.0" layoutY="31.0" prefHeight="200.0" prefWidth="662.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="search_demande" onKeyTyped="#searchDemande" prefHeight="33.0" prefWidth="316.0" promptText="Search" styleClass="search" stylesheets="@hotel_style.css">
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </TextField>
+                  <FontAwesomeIcon glyphName="SEARCH" layoutX="14.0" layoutY="21.0" size="1.2em" text="" />
+                  <TableView fx:id="demande_tabView" layoutX="3.0" layoutY="49.0" onMouseClicked="#demande_selected" prefHeight="248.0" prefWidth="674.0" styleClass="tab_content" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+                     <columns>
+                        <TableColumn fx:id="numDemande_demande" editable="false" prefWidth="134.0" sortable="false" styleClass="tab_column1" text="Num_demande" />
+                        <TableColumn fx:id="type_demande" editable="false" prefWidth="134.0" sortable="false" styleClass="tab_column" text="Type_room" />
+                        <TableColumn fx:id="email_demande" editable="false" minWidth="0.0" prefWidth="134.0" sortable="false" styleClass="tab_column_n" text="Email" />
+                        <TableColumn fx:id="date_debutDemande" editable="false" prefWidth="134.0" sortable="false" styleClass="tab_column1" text="Date_debut" />
+                        <TableColumn fx:id="nbj_demande" editable="false" prefWidth="134.0" sortable="false" styleClass="tab_column1" text="Nb_jours" />
+                     </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+                  <AnchorPane layoutX="174.0" layoutY="315.0" prefHeight="67.0" prefWidth="326.0" AnchorPane.leftAnchor="174.0">
+                     <children>
+                        <Button fx:id="refuse" layoutX="123.0" layoutY="59.0" mnemonicParsing="false" onAction="#refuseDemande" style="-fx-background-color: #62063D;" styleClass="btn_req" text="Refuse">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</HBox>

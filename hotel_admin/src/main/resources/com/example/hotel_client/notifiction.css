@@ -1,0 +1,26 @@
+.notification {
+    -fx-background-color: #333333;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px;
+    -fx-text-fill: #ffffff;
+}
+
+.notification .title {
+    -fx-font-weight: bold;
+}
+
+.notification .message {
+    -fx-font-size: 12pt;
+}
+
+.notification.show {
+    -fx-opacity: 1;
+    -fx-translate-y: 0;
+    -fx-transition: all 0.5s ease-in-out;
+}
+
+.notification.hide {
+    -fx-opacity: 0;
+    -fx-translate-y: -50px;
+    -fx-transition: all 0.5s ease-in-out;
+}
